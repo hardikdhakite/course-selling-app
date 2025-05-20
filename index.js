@@ -18,7 +18,13 @@ app.post("/user/signin", function (req, res) {
 
 app.get("/user/purchases", function (req, res) {
     res.json({
-        message: "my courses endpoint"
+        message: "my courses"
+    })
+})
+
+app.post("/user/purchases", function (req, res) {
+    res.json({
+        message: "purchasing a courses"
     })
 })
 
