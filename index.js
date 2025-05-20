@@ -1,17 +1,11 @@
-
 import express from "express";
-import { createUserRoute } from "./routes/user";
-import { createCourseRoute } from "./routes/course";
-import { userRouter } from "./routes/user";
-import { courseRouter } from "./routes/course";
+import { userRouter } from "./routes/user.js";
+import { courseRouter } from "./routes/course.js";
 
 const app = express();
 app.use(express.json())
 
-app.use("/user", userRouter);
-app.use("/course", courseRouter);
-
-createUserRoute(app);
-createCourseRoute(app);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/course", courseRouter);
 
 app.listen(3000);
