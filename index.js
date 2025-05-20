@@ -1,37 +1,17 @@
 
 import express from "express";
+import { createUserRoute } from "./routes/user";
+import { createCourseRoute } from "./routes/course";
+import { userRouter } from "./routes/user";
+import { courseRouter } from "./routes/course";
 
 const app = express();
 app.use(express.json())
 
-app.post("/user/signup", function (req, res) {
-    res.json({
-        message: "signup endpoint"
-    })
-})
+app.use("/user", userRouter);
+app.use("/course", courseRouter);
 
-app.post("/user/signin", function (req, res) {
-    res.json({
-        message: "signin endpoint"
-    })
-})
-
-app.get("/user/purchases", function (req, res) {
-    res.json({
-        message: "my courses"
-    })
-})
-
-app.post("/user/purchases", function (req, res) {
-    res.json({
-        message: "purchasing a courses"
-    })
-})
-
-app.get("/courses", function (req, res) {
-    res.json({
-        message: "all courses endpoint"
-    })
-})
+createUserRoute(app);
+createCourseRoute(app);
 
 app.listen(3000);
