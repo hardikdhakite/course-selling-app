@@ -1,7 +1,13 @@
 
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 console.log("connected to");
-mongoose.connect("mongodb+srv://hardikdhakite2002:JkYfAk0ZGKOLQNKl@cluster0.y6dykhp.mongodb.net/coursera-app");
+const DATABASE_URL = process.env.DATABASE_URL;
+
+mongoose.connect(DATABASE_URL);
 
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
