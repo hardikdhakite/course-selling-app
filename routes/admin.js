@@ -2,7 +2,6 @@ import { Router } from "express";
 import { adminModel } from "../db.js";
 
 const adminRouter = Router();
-app.use(express.json())
 
 adminRouter.post("/signup", function (req, res) {
 
