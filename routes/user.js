@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { userModel } from "../db.js";
+import { purchaseModel, userModel } from "../db.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { userMiddleware } from "../middleware/user.js";
 
 dotenv.config();
 
@@ -46,10 +47,15 @@ userRouter.post("/signin", async function (req, res) {
     }
 })
 
-userRouter.get("/purchases", function (req, res) {
+userRouter.get("/purchases", userMiddleware, async function (req, res) {
+    const userId = req.userId;
+
+    const purchases = await purchaseModel.find({
+        userId
+    })
 
     res.json({
-        message: "my courses"
+        purchases
     })
 })
 
