@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { purchaseModel, userModel } from "../db.js";
+import { courseModel, purchaseModel, userModel } from "../db.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { userMiddleware } from "../middleware/user.js";
@@ -52,10 +52,15 @@ userRouter.get("/purchases", userMiddleware, async function (req, res) {
 
     const purchases = await purchaseModel.find({
         userId
+    });
+
+    const coursesData = await courseModel.find({
+        _id: { $in: purchases.map(x => x.courseId) }
     })
 
     res.json({
-        purchases
+        purchases,
+        coursesData
     })
 })
 

@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { userMiddleware } from "../middleware/user";
-import { courseModel, purchaseModel } from "../db";
+import { userMiddleware } from "../middleware/user.js";
+import { courseModel, purchaseModel } from "../db.js";
 
 const courseRouter = Router();
 
