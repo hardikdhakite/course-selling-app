@@ -93,7 +93,7 @@ adminRouter.get("/course/bulk", adminMiddleware, async function (req, res) {
     });
 
     res.json({
-        message: "Course updated",
+        message: "Get all course",
         courses
     })
 })
